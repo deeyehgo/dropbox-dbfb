@@ -1,5 +1,7 @@
+$font-family: 'Open Sans', sans-serif;
+
 body {
     background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: $font-family;
     color: #333;
 }
