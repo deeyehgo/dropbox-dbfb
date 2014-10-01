@@ -30,7 +30,7 @@
 
 .section {
   color: $main-copy-color;
-  
+
   h1 {
     font-size: 22px;
     text-align: center;
@@ -43,4 +43,6 @@
 }
 
 .section--why-dbfb {
+  border-bottom: 1px solid $lighter-cool-grey;
+  padding: 57px 0 59px;
 }
