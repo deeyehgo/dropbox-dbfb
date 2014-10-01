@@ -1,0 +1,20 @@
+//---------------------------
+// Global
+//---------------------------
+
+.active {
+  font-weight: bold;
+}
+
+.nav-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button {
+  background-color: transparent;
+  border-color: $dropbox-blue;
+  border-radius: 2px;
+  border-width: 2px;
+}
