@@ -2,6 +2,20 @@
 // Global
 //---------------------------
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+a {
+  color: $dropbox-blue;
+  text-decoration: none;
+}
+
 .active {
   font-weight: bold;
 }
@@ -10,11 +24,4 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.button {
-  background-color: transparent;
-  border-color: $dropbox-blue;
-  border-radius: 2px;
-  border-width: 2px;
 }

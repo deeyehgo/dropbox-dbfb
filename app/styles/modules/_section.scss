@@ -1,0 +1,46 @@
+//---------------------------
+// Section
+//---------------------------
+
+
+
+.header {
+  text-align: center;
+
+  h1 {
+    font-size: 37px
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+}
+
+.buy-cta {
+  color: $buy-cta-color;
+  display: block;
+  text-align: center;
+
+  a {
+    border-bottom: 1px solid $buy-cta-color;
+    color: white;
+    padding-bottom: 2px;
+  }
+}
+
+.section {
+  color: $main-copy-color;
+  
+  h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
+.section--why-dbfb {
+}

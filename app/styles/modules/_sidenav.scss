@@ -1,0 +1,17 @@
+//---------------------------
+// Side Nav
+//---------------------------
+
+.sidenav {
+  color: white;
+
+  a {
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+
+    &.active {
+      font-weight: bold;
+    }
+  }
+}

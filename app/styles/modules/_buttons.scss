@@ -1,0 +1,43 @@
+// TODO: hover state for .button
+
+//---------------------------
+// Buttons
+//---------------------------
+
+$btn-outline-color: #0B56BC;
+
+.button-cta {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.button-cta--outline-sm {
+  background: white;
+  border: 1px solid $dropbox-blue;
+  border-radius: 3px;
+  padding: 5px 13px;
+}
+
+.button-cta--outline-lg {
+  background: white;
+  border: 2px solid $btn-outline-color;
+  border-radius: 3px;
+  padding: 15px 95px;
+}
+
+.button-try {
+  font-size: 17px;
+}
+
+.button-learn-more {
+  font-size: 14px;
+}
+
+.button-cta--invert {
+  background-color: $dropbox-blue;
+}
+
+.button-cta--shadow {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 1);
+}
