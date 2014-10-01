@@ -1,3 +1,35 @@
 //---------------------------
 // Carousel
 //---------------------------
+
+$pagination-item-color:           $dropbox-blue;
+$pagination-item-color--active:   $lighter-cool-grey;
+
+.arrow {
+  background: url(../images/arrow-left.png) no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 60px;
+}
+
+.arrow--right {
+  transform-origin: 8px 15px;
+  transform: rotate(180deg);
+}
+
+.pagination-item {
+  background-color: $pagination-item-color;
+  display: inline-block;
+  margin-right: 26px;
+  border-radius: 16px;
+  width: 16px;
+  height: 16px;
+
+  &.active {
+    background-color: $pagination-item-color--active;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
