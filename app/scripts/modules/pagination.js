@@ -1,5 +1,6 @@
+'use strict';
 function DBPagination() {
-  this.pageItems = 
+  // this.pageItems = 
 }
 
 DBPagination.prototype.init = function() {

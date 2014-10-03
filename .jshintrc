@@ -19,6 +19,7 @@
     "smarttabs": true,
     "jquery": true,
     "globals": {
-        "DBCarousel": true
+        "DBCarousel": true,
+        "DBPagination": true
     }
 }

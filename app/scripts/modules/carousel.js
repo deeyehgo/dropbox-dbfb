@@ -13,7 +13,7 @@ function DBCarousel(carouselEl) {
 }
 
 DBCarousel.prototype.init = function() {
-  var pagination = new DBPagination(document.querySelector('.pagination'))
+  var pagination = new DBPagination(document.querySelector('.pagination'));
   // pagination item should build out based on num img in carousel.
   if(this.config.paginationItems.length > 0) {
     pagination.init();
