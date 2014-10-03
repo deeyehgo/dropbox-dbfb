@@ -5,3 +5,8 @@
 body {
   font-family: $font-family;
 }
+
+.hero {
+  background: $dropbox-blue url(../images/dropbox-for-business-files.png) no-repeat;
+  background-size: cover;
+}
