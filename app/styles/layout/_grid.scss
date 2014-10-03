@@ -78,8 +78,11 @@ $gutter-width: 30px;
 }
 
 .col-4 {
-  // width: #{((4 * $column-width) + (3 * $gutter-width)) / $grid-width * 100}px; 
-  width: 310px; 
+  width: $column-width * 4 + $gutter-width * 3;
+}
+
+.col-push-1 {
+  margin-left: $column-width + $gutter-width * 2;
 }
 
 .col-12 {
