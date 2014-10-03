@@ -1,3 +1,5 @@
+// TODO: remove marginleft on firstchild
+
 //---------------------------
 // Grid
 // - 12 columns
@@ -16,6 +18,10 @@ $gutter-width: 30px;
   box-sizing: border-box;
 }
 
+.container {
+  width: 100%;
+}
+
 .row {
   @include clearfix();
   margin:0 auto;
@@ -23,6 +29,8 @@ $gutter-width: 30px;
 
 .grid {
   width: $grid-width;
+  max-width: $grid-width;
+  margin: 0 auto;
 }
 
 .cols {
@@ -53,58 +61,27 @@ $gutter-width: 30px;
     float:left;
 }
 
-.col {
-  margin-left: 1.6%;
-}
+*[class^='col-'] {
+  // margin-left: $gutter-width;
 
-.col:first-child{
-  margin-left:0;
+  &:first-child {
+    margin-left: 0;    
+  }
 }
 
 .col-1 {
-  width: 6.86666666667%;
-  
+  width: $column-width;
 }
+
 .col-2 {
-  width: 15.3333333333%;
-  
+  width: $column-width * 2 + $gutter-width;
 }
-.col-3 {
-  width: 23.8%;
-  
-}
+
 .col-4 {
-  width: 32.2666666667%;
-  
+  // width: #{((4 * $column-width) + (3 * $gutter-width)) / $grid-width * 100}px; 
+  width: 310px; 
 }
-.col-5 {
-  width: 40.7333333333%;
-  
-}
-.col-6 {
-  width: 49.2%;
-  
-}
-.col-7 {
-  width: 57.6666666667%;
-  
-}
-.col-8 {
-  width: 66.1333333333%;
-  
-}
-.col-9 {
-  width: 74.6%;
-  
-}
-.col-10 {
-  width: 83.0666666667%;
-  
-}
-.col-11 {
-  width: 91.5333333333%;
-  
-}
+
 .col-12 {
   width: 100%;
   margin-left: 0;
