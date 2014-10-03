@@ -74,7 +74,7 @@ $gutter-width: 30px;
 }
 
 .col-2 {
-  width: $column-width * 2 + $gutter-width;
+  width: $column-width * 2 + $gutter-width * 2;
 }
 
 .col-4 {
