@@ -3,18 +3,9 @@
 'use strict';
 (function () {
   var carousel,
-    hero,
-    offsetSpeed;
+    hero;
 
-  offsetSpeed = 0.7;
-
-  carousel = new DBCarousel(document.querySelector('.carousel'));
-  hero = document.querySelector('.hero');
-  
-  function handleScroll() {
-    hero.style.backgroundPosition = '0 ' + -(hero.getBoundingClientRect().top * offsetSpeed) + 'px';
-
-  }
-  window.addEventListener('scroll', handleScroll);
+  carousel = new DBCarousel('.carousel');
+  hero = new DBFBHero('.hero');
   // retina
 }());

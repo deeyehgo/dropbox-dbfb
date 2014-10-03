@@ -2,14 +2,14 @@
 /**
  * [DBCarousel]
  */
-function DBCarousel(carouselEl) {
+function DBCarousel(el) {
   this.config = {};
-  this.carousel = carouselEl;
+  this.el = document.querySelector(el);
   this.index = 0;
   this.totalItems = 4;
-  this.prev = this.carousel.querySelector('.arrow--prev') || '';
-  this.next = this.carousel.querySelector('.arrow--next') || '';
-  this.pagination = this.carousel.querySelector('.pagination-container') || '';
+  this.prev = this.el.querySelector('.arrow--prev') || '';
+  this.next = this.el.querySelector('.arrow--next') || '';
+  this.pagination = this.el.querySelector('.pagination-container') || '';
 }
 
 DBCarousel.prototype.init = function() {

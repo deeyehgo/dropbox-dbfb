@@ -1,4 +1,5 @@
 // TODO: hover state for .button
+// TODO: DRY
 
 //---------------------------
 // Buttons
@@ -28,6 +29,14 @@ $btn-outline-color: #0B56BC;
   border: 2px solid $btn-outline-color;
   border-radius: 3px;
   padding: 15px 95px;
+}
+
+.button-cta--invert-lg {
+  @extend .button-cta--outline-lg;
+  background: $dropbox-blue;
+  border: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .button-try {

@@ -77,6 +77,14 @@ $gutter-width: 30px;
   width: $column-width * 2 + $gutter-width * 2;
 }
 
+.col-3 {
+  width: $column-width * 3 + $gutter-width * 2;
+}
+
+.col-3-pad-right {
+  width: $column-width * 3 + $gutter-width * 3;
+}
+
 .col-4 {
   width: $column-width * 4 + $gutter-width * 3;
 }

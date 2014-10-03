@@ -2,8 +2,6 @@
 // Section
 //---------------------------
 
-
-
 .header {
   text-align: center;
 
@@ -56,4 +54,15 @@
   background: url(../images/video-still.jpg) center no-repeat;
   background-size: cover;
   height: 500px;
+}
+
+.section--sync {
+  border-bottom: 1px solid $lighter-cool-grey;
+  padding: 57px 0 59px;
+  width: 100%;
+}
+
+.cta-container {
+  width: 254px;
+  margin: 0 auto;
 }
