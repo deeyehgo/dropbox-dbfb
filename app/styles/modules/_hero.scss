@@ -2,6 +2,10 @@
 // Hero
 //---------------------------
 
+.hero-container {
+  background-color: $dropbox-blue;
+}
+
 .hero {
   background-color: $dropbox-blue;
   height: 500px;
@@ -13,4 +17,5 @@
 }
 
 .header {
+
 }

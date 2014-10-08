@@ -6,6 +6,6 @@
     hero;
 
   carousel = new DBCarousel('.carousel');
-  hero = new DBFBHero('.hero');
+  
   // retina
 }());
