@@ -7,6 +7,24 @@ body {
 }
 
 .hero {
+  // background: RGBA(59, 114, 222, 0) url(../images/dropbox-for-business-files.png) no-repeat;
+  // background-size: cover;
+  // background-position: 0 800px;
+  // transition: background-position 1s ease, background-color 1s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-bg {
   background: $dropbox-blue url(../images/dropbox-for-business-files.png) no-repeat;
   background-size: cover;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translate(0, 100px);
+  z-index: 1;
+  
 }

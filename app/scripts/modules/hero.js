@@ -4,7 +4,7 @@ var DBFBHero = (function() {
 
   var _animating = false,
     _offsetSpeed = 0.75,
-    _el = document.querySelector('.hero');
+    _el = document.querySelector('.hero-bg');
   
   var _init = function() {
     document.addEventListener('DOMContentLoaded', _handleLoad);
@@ -14,10 +14,13 @@ var DBFBHero = (function() {
   var _handleLoad = function() {
     _animating = true;
     _el.addEventListener('transitionend', _handleTransitionComplete);
-    setTimeout(_handleTransitionComplete, 2000);
+    _el.style.opacity = 1;
+    _el.style.transform = 'translate(0, 0)';
+    _el.style.transition = 'opacity 0.5s ease, transform 1s ease';
   };
 
   var _handleTransitionComplete = function() {
+    _el.removeEventListener('transitionend', _handleTransitionComplete);
     _animating = false;
     _el.style.transition = 0;
   };
