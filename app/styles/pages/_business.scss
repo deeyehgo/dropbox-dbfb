@@ -6,11 +6,41 @@ body {
   font-family: $font-family;
 }
 
+.article-item {
+  h1 {
+    margin-bottom: 15px;
+  }
+}
+
+.article-img {
+  filter: blur(5px);
+  opacity: 0;
+  transform: translate3d(-50%, 0, 0) rotate(-3deg);
+
+  &.show {
+    filter: blur(0);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    transition: opacity 0.75s ease, filter 0.5s ease, transform 0.75s ease;
+
+  }
+}
+
+.no-js {
+  .article-img {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    transition: none;
+  }
+}
+
 .hero {
   // background: RGBA(59, 114, 222, 0) url(../images/dropbox-for-business-files.png) no-repeat;
   // background-size: cover;
   // background-position: 0 800px;
   // transition: background-position 1s ease, background-color 1s ease;
+  overflow: hidden;
   position: relative;
   z-index: 2;
 }
@@ -24,7 +54,25 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  transform: translate(0, 100px);
+  transform: translate(0, 60px);
   z-index: 1;
-  
+}
+
+.no-js {
+  .hero-bg {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.guide {
+  background: url(../images/_guide.png) no-repeat;
+  width: 1050px;
+  position: absolute;
+  z-index: 9;
+  opacity: 0.2;
+  left: 50%;
+  transform: translate(-50%);
+  height: 3505px;
+  pointer-events: none;
 }

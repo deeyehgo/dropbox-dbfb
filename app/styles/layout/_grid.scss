@@ -62,7 +62,7 @@ $gutter-width: 30px;
 }
 
 *[class^='col-'] {
-  // margin-left: $gutter-width;
+  margin-left: $gutter-width;
 
   &:first-child {
     margin-left: 0;    

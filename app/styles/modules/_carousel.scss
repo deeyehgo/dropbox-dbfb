@@ -5,6 +5,14 @@
 $pagination-item-color:           $dropbox-blue;
 $pagination-item-color--active:   $lighter-cool-grey;
 
+.carousel-image-container {
+  overflow: visible;
+  img {
+    display: inline-block;
+    width: 540px;
+  }
+}
+
 .arrow {
   background: url(../images/arrow-left.png) no-repeat;
   display: inline-block;

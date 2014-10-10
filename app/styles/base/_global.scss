@@ -9,6 +9,7 @@ h4,
 h5,
 h6 {
   font-weight: normal;
+  margin: 0;
 }
 
 a {
@@ -24,4 +25,15 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.show-header {
+  opacity: 1;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: translate(0, 0);
+
+}
+
+.remove-transition {
+  transition: none;
 }

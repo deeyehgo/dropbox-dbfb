@@ -27,8 +27,8 @@ $btn-outline-color: #0B56BC;
 .button-cta--outline-lg {
   background: white;
   border: 2px solid $btn-outline-color;
-  border-radius: 3px;
-  padding: 15px 95px;
+  border-radius: 5px;
+  padding: 14px 95px;
 }
 
 .button-cta--invert-lg {
@@ -41,10 +41,14 @@ $btn-outline-color: #0B56BC;
 
 .button-try {
   font-size: 17px;
+  margin-bottom: 21px;
 }
 
 .button-learn-more {
   font-size: 14px;
+  transform: translate(-50%, 0);
+  position: relative;
+  left: 50%;
 }
 
 .button-cta--invert {

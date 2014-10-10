@@ -13,24 +13,29 @@ var DBFBHero = (function() {
 
   var _handleLoad = function() {
     _animating = true;
+    _el.addEventListener('webkitTransitionEnd', _handleTransitionComplete);
     _el.addEventListener('transitionend', _handleTransitionComplete);
     _el.style.opacity = 1;
-    _el.style.transform = 'translate(0, 0)';
-    _el.style.transition = 'opacity 0.5s ease, transform 1s ease';
+    _el.classList.add('show-header');
+    _handleScroll();
   };
 
   var _handleTransitionComplete = function() {
+    _el.removeEventListener('webkitTransitionEnd', _handleTransitionComplete);
     _el.removeEventListener('transitionend', _handleTransitionComplete);
     _animating = false;
-    _el.style.transition = 0;
+    _el.classList.add('remove-transition');
   };
 
   var _handleScroll = function() {
-    _el.style.backgroundPosition = '0 ' + Math.round(-(_el.getBoundingClientRect().top * _offsetSpeed)) + 'px';
-  }
+    var transformStr = 'translate(0, '+((window.pageYOffset * _offsetSpeed)) + 'px)';
+    _el.style.webkitTransform = transformStr;
+    _el.style.MozTransform = transformStr;
+    _el.style.msTransform = transformStr;
+    _el.style.OTransform = transformStr;
+    _el.style.transform = transformStr;
+  };
 
   _init();
-
-  // return DBFBHero;
 
 }());
