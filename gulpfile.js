@@ -34,11 +34,11 @@ gulp.task('html', ['styles', 'scripts'], function () {
         .pipe($.plumber())
         .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
         .pipe(jsFilter)
-        .pipe($.uglify())
+        // .pipe($.uglify())
         .pipe(jsFilter.restore())
-        .pipe(cssFilter)
-        .pipe($.csso())
-        .pipe(cssFilter.restore())
+        // .pipe(cssFilter)
+        // .pipe($.csso())
+        // .pipe(cssFilter.restore())
         .pipe($.useref.restore())
         .pipe($.useref())
         .pipe(gulp.dest('dist'))
@@ -47,11 +47,11 @@ gulp.task('html', ['styles', 'scripts'], function () {
 
 gulp.task('images', function () {
     return gulp.src('app/images/**/*')
-        .pipe($.cache($.imagemin({
+        .pipe($.imagemin({
             optimizationLevel: 3,
             progressive: true,
             interlaced: true
-        })))
+        }))
         .pipe(gulp.dest('dist/images'))
         .pipe($.size());
 });
