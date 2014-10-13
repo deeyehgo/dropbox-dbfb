@@ -17,5 +17,10 @@
     "strict": true,
     "trailing": true,
     "smarttabs": true,
-    "jquery": true
+    "jquery": true,
+    "globals": {
+        "DBCarousel": true,
+        "DBPagination": true,
+        "DBFBVideoPlayer": true
+    }
 }

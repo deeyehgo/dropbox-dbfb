@@ -1,0 +1,101 @@
+//---------------------------
+// Carousel
+//---------------------------
+
+$pagination-item-color:           $dropbox-blue;
+$pagination-item-color--active:   $lighter-cool-grey;
+$carousel-width: 540px;
+
+.carousel {
+  width: $carousel-width;
+  margin: 0 auto;
+}
+
+.carousel-image-wrapper {
+  margin: 0 auto 18px;
+  
+  height: 300px;
+  overflow: hidden;
+}
+
+.carousel-image-container {
+  width: 1620px;
+  height: 300px;
+  position: relative;
+
+  img {
+    float: left;
+    width: $carousel-width;
+  }
+}
+
+.arrow-container {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 2;
+  width: $carousel-width;
+}
+
+.pagination-container {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.carousel-copy {
+  margin-bottom: 30px;
+}
+
+.no-js {
+  .carousel-image-wrapper {
+    overflow: visible;
+    height: 100%;
+  }
+
+  .carousel-image-container {
+    width: auto;
+    height: 100%;
+    position: relative;
+
+    img {
+      float: none;
+      display: block;
+      width: $carousel-width;
+    }
+  }
+}
+
+.arrow {
+  display: inline-block;
+  width: 16px;
+  height: 30px;
+  position: absolute;
+}
+
+.arrow--prev {
+  background: url(../images/arrow-left.png) no-repeat;
+  left: -85px;
+}
+
+.arrow--next{
+  background: url(../images/arrow-right.png) no-repeat;
+  right: -85px;
+}
+
+.pagination-item {
+  background-color: $pagination-item-color;
+  display: inline-block;
+  margin-right: 26px;
+  border-radius: 16px;
+  width: 16px;
+  height: 16px;
+
+  &.active {
+    background-color: $pagination-item-color--active;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+

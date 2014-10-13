@@ -1,0 +1,37 @@
+//---------------------------
+// Hero
+//---------------------------
+
+.hero-container {
+  // background-color: $dropbox-blue;
+}
+
+.hero {
+  background-color: $dropbox-blue;
+  height: 500px;
+  color: $header-copy-color;
+}
+
+.header-wrapper {
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  width: 990px;
+  z-index: 2;
+}
+
+.header {
+  top: 107px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  h1 {
+    margin-bottom: 9px;
+  }
+
+  h2 {
+    line-height: 1.7em;
+    margin-bottom: 22px;
+  }
+}

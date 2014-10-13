@@ -1,0 +1,53 @@
+//---------------------------
+// Video Player
+//---------------------------
+
+.video-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.close-video {
+  position: absolute;
+  top: 0;
+  color: $dropbox-blue;
+  z-index: 2;
+  right: 50%;
+  transform: translate(460px, 0);
+}
+
+.play-video {
+  background: url(../images/player_large.png) no-repeat;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 106px;
+  height: 106px;
+}
+
+.no-js {
+  .play-video {
+    display: none;
+  }
+}
+
+.video-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+
+  &.show {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.video-player {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}

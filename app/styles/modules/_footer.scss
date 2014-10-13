@@ -1,0 +1,54 @@
+//---------------------------
+// Footer
+//---------------------------
+
+.dbfb-footer {
+  color: $light-cool-grey;
+  font-size: 13px;
+  margin: 0 auto;
+  width: 990px;
+  padding: 59px 0;
+  
+  ul {
+    li {
+      margin-bottom: 9px
+    }
+  }
+
+  a {
+    color: $light-cool-grey;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.dbfb-footer-header {
+  font-weight: 700;
+}
+
+.language-globe {
+  background-image: url(../images/language_globe.png);
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  top: 5px;
+  position: relative;
+  margin-right: 6px;
+}
+
+.language-selector {
+  float: right;
+
+}
+
+.language-arrow {
+  background-image: url(../images/language_arrow.png);
+  width: 9px;
+  height: 5px;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  margin-left: 6px;
+}

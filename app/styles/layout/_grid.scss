@@ -1,0 +1,105 @@
+
+// Grid
+// - 12 columns
+// - width: 990px
+// - column width: 55px
+// - gutter width: 30px
+//---------------------------
+
+$grid-width: 990px;
+$column-width: 55px;
+$gutter-width: 30px;
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+}
+
+.row {
+  @include clearfix();
+  margin:0 auto;
+}
+
+.grid {
+  width: $grid-width;
+  max-width: $grid-width;
+  margin: 0 auto;
+}
+
+.cols {
+  margin: 0 auto;
+  width: 100%;
+
+  &:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    float:left;
+}
+
+*[class^='col-'] {
+  margin-left: $gutter-width;
+
+  &:first-of-type {
+    margin-left: 0;    
+  }
+}
+
+footer  *[class^='col-'] {
+  margin-left: 0;
+}
+
+.col-1 {
+  width: $column-width;
+}
+
+.col-2 {
+  width: $column-width * 2 + $gutter-width * 2;
+}
+
+.col-3 {
+  width: $column-width * 3 + $gutter-width * 2;
+}
+
+.col-3-pad-right {
+  width: $column-width * 3 + $gutter-width * 3;
+}
+
+.col-4 {
+  width: $column-width * 4 + $gutter-width * 3;
+}
+
+.col-12 {
+  width: $column-width * 12 + $gutter-width * 11;
+}
+
+.col-push-1 {
+  margin-left: $column-width + $gutter-width * 2;
+}
+
+.col-12 {
+  width: 100%;
+  margin-left: 0;
+}

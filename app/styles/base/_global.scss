@@ -1,0 +1,44 @@
+//---------------------------
+// Global
+//---------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
+a {
+  color: $dropbox-blue;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.nav-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.show-header {
+  opacity: 1;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: translate3d(0, 0, 0);
+
+}
+
+.remove-transition {
+  transition: none;
+}
+
+.center {
+  float: none !important;
+  margin: 0 auto !important;
+}

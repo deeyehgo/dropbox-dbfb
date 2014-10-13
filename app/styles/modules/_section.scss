@@ -1,0 +1,97 @@
+//---------------------------
+// Section
+//---------------------------
+
+.header {
+  text-align: center;
+
+  h1 {
+    font-size: 37px
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+}
+
+.buy-cta {
+  color: $buy-cta-color;
+  display: block;
+  text-align: center;
+
+  a {
+    border-bottom: 1px solid $buy-cta-color;
+    color: white;
+    padding-bottom: 2px;
+  }
+}
+
+.section {
+  color: $main-copy-color;
+  position: relative;
+
+  h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.7em;
+  }
+
+  .container {
+    margin-bottom: 36px;
+  }
+}
+
+.section--why-dbfb {
+  border-bottom: 1px solid $lighter-cool-grey;
+  padding: 72px 0 59px;
+
+  h1 {
+    margin-bottom: 31px;
+  }
+}
+
+.section--what-can-dbfb-do {
+  padding: 71px 0 60px;
+
+  h1 {
+    margin-bottom: 54px;
+  }
+}
+
+.section--work-together {
+  background: url(../images/video-still.jpg) center no-repeat;
+  background-size: cover;
+  height: 500px;
+  padding: 58px 0;
+}
+
+.section--sync {
+  border-bottom: 1px solid $lighter-cool-grey;
+  padding: 63px 0 76px;
+  width: 100%;
+
+  h1 {
+    margin-bottom: 30px;
+  }
+}
+
+
+// TODO: move to _business?
+.cta-container {
+  width: 254px;
+  margin: 0 auto;
+}
+
+.article-img {
+  margin: 0 auto 11px;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
