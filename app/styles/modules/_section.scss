@@ -72,8 +72,12 @@
 
 .section--sync {
   border-bottom: 1px solid $lighter-cool-grey;
-  padding: 57px 0 59px;
+  padding: 63px 0 76px;
   width: 100%;
+
+  h1 {
+    margin-bottom: 30px;
+  }
 }
 
 
