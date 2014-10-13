@@ -3,17 +3,13 @@
 
 'use strict';
 (function () {
-  var carousel;
-
-  document.documentElement.classList.toggle('no-js');
-  carousel = new DBCarousel('.carousel');
-  window.addEventListener('scroll', handleScroll);
-  setTimeout(handleScroll, 10);
+  var carousel = new DBCarousel('.carousel'),
+    videoPlayer = new DBFBVideoPlayer('.video-wrapper');
 
   // move to separate class
   var articleItems = document.querySelectorAll('.article-img'),
-    articleItemsTotal = articleItems.length,
-    triggerY = document.querySelector('.section--why-dbfb').getBoundingClientRect().top - 200;
+    articleItemsTotal = articleItems.length;
+    // triggerY = document.querySelector('.section--why-dbfb').getBoundingClientRect().top - 200;
 
   function handleScroll() {
     if(isInViewport(document.querySelector('.article-img'))) {
@@ -26,7 +22,7 @@
   }
 
   function showArticleItem(i) {
-    articleItems[i].classList.add('show')
+    articleItems[i].classList.add('show');
   }
 
   function isInViewport(el) {
@@ -40,6 +36,10 @@
       rect.bottom <= (window.innerHeight || html.clientHeight)
     );
   }
+
+  document.documentElement.classList.toggle('no-js');
+  window.addEventListener('scroll', handleScroll);
+  setTimeout(handleScroll, 10);
   
   // retina
 }());

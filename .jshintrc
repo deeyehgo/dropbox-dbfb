@@ -20,6 +20,7 @@
     "jquery": true,
     "globals": {
         "DBCarousel": true,
-        "DBPagination": true
+        "DBPagination": true,
+        "DBFBVideoPlayer": true
     }
 }

@@ -20,7 +20,7 @@
 
     </head>
     <body>
-        <!-- <div class="guide"></div> -->
+        <div class="guide"></div>
         <!-- <div class="container"> -->
             <div class="hero-container">
                 <div class="hero">
@@ -89,21 +89,31 @@
                 <div class="col-12">
                     <h1>What can Dropbox for <br>Business do for your team?</h1>
                     <div class="carousel">
-                        <div class="carousel-image-container">
-                            <img src="images/BCBG.jpg" data-retina-src="images/BCBG@2x.jpg" alt="">
-                            <img src="images/asana.jpg" data-retina-src="images/asana@2x.jpg" alt="">
-                            <img src="images/centric.jpg" data-retina-src="images/centric@2x.jpg" alt="">
-                        </div>               
+                        <div class="carousel-image-wrapper">
+                            <div class="carousel-image-container">
+                                <img src="images/BCBG.jpg" data-retina-src="images/BCBG@2x.jpg" alt="">
+                                <img src="images/asana.jpg" data-retina-src="images/asana@2x.jpg" alt="">
+                                <img src="images/centric.jpg" data-retina-src="images/centric@2x.jpg" alt="">
+                            </div>
+                        </div>              
                     </div>
-                    <p>From empowering mobile teams to making sure you never lose a file, Dropbox for Business is designed to help your team work smarter.</p>
+                    <div class="carousel-copy cols">
+                        <p class="col-4 col-center">From empowering mobile teams to making sure you never lose a file, Dropbox for Business is designed to help your team work smarter.</p>
+                    </div>
                     <a href="#" class="button-cta button-cta--outline-sm button-learn-more">Learn More</a>
                 </div>
             </div>
 
             <div class="section section--work-together">
-                <h1>Work together simply with <br>Dropbox for Business</h1>
-                <a href="#" class="button play-video"></a>
-                <video class="video-player" src="images/video_dfb_small.mov" controls></video>
+                <div class="video-wrapper">
+                    <h1>Work together simply with <br>Dropbox for Business</h1>
+                    <a href="#" class="button play-video"></a>
+                    
+                    <div class="video-container">
+                        <a href="#" class="button close-video">X</a>
+                        <video class="video-player" src="images/video_dfb_small.mov" controls></video>
+                    </div>
+                </div>
             </div>
 
             <div class="section section--sync">
@@ -196,6 +206,7 @@
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/modules/hero.js"></script>
+        <script src="scripts/modules/videoplayer.js"></script>
         <script src="scripts/modules/pagination.js"></script>
         <script src="scripts/modules/carousel.js"></script>
         <script src="scripts/main.js"></script>
