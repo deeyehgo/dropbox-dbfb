@@ -30,7 +30,7 @@ a {
 .show-header {
   opacity: 1;
   transition: opacity 1s ease, transform 1s ease;
-  transform: translate(0, 0);
+  transform: translate3d(0, 0, 0);
 
 }
 

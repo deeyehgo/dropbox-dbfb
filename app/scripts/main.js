@@ -9,7 +9,6 @@
   // move to separate class
   var articleItems = document.querySelectorAll('.article-img'),
     articleItemsTotal = articleItems.length;
-    // triggerY = document.querySelector('.section--why-dbfb').getBoundingClientRect().top - 200;
 
   function handleScroll() {
     if(isInViewport(document.querySelector('.article-img'))) {
@@ -28,8 +27,6 @@
   function isInViewport(el) {
     var rect = el.getBoundingClientRect(),
       html = document.documentElement;
-
-    // console.log(rect.top, rect.bottom, window.innerHeight, html.clientHeight);
 
     return (
       rect.top <= (window.innerHeight || html.clientHeight) &&

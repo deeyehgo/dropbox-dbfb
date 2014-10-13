@@ -21,7 +21,7 @@ body {
     filter: blur(0);
     opacity: 1;
     transform: translate3d(0, 0, 0) rotate(0deg);
-    transition: opacity 0.75s ease, filter 0.5s ease, transform 0.75s ease;
+    animation: elastic-article 1.7s forwards linear;
 
   }
 }
@@ -36,10 +36,6 @@ body {
 }
 
 .hero {
-  // background: RGBA(59, 114, 222, 0) url(../images/dropbox-for-business-files.png) no-repeat;
-  // background-size: cover;
-  // background-position: 0 800px;
-  // transition: background-position 1s ease, background-color 1s ease;
   overflow: hidden;
   position: relative;
   z-index: 2;
@@ -56,6 +52,8 @@ body {
   left: 0;
   height: 630px;
   transform: translate(0, 60px);
+  width: 1050px;
+  margin: 0 auto;
   z-index: 1;
 }
 

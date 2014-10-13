@@ -28,7 +28,7 @@ var DBFBHero = (function() {
   };
 
   var _handleScroll = function() {
-    var transformStr = 'translate(0, '+((window.pageYOffset * _offsetSpeed)) + 'px)';
+    var transformStr = 'translate3d(0, '+((window.pageYOffset * _offsetSpeed)) + 'px, 0)';
     _el.style.webkitTransform = transformStr;
     _el.style.MozTransform = transformStr;
     _el.style.msTransform = transformStr;
