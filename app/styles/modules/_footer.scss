@@ -8,6 +8,17 @@
   margin: 0 auto;
   width: 990px;
   padding: 59px 0;
+
+  @media (max-width: $screen-md) {
+    width: 100%;
+  }
+
+  .container {
+    @media (max-width: $screen-md) {
+      margin: 0 15px;
+      font-size: 18px;
+    }
+  }
   
   ul {
     li {

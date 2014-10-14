@@ -11,7 +11,6 @@ function DBFBVideoPlayer(el) {
 }
 
 DBFBVideoPlayer.prototype.init = function() {
-  console.log('oaisjidsaj', this, this.playBtn);
   this.playBtn.addEventListener('click', this.handlePlay.bind(this));
   this.closeBtn.addEventListener('click', this.handleClose.bind(this));
   this.video.addEventListener('ended', this.handleVideoComplete.bind(this));

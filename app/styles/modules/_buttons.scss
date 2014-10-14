@@ -41,6 +41,11 @@ $btn-outline-color: #0B56BC;
 .button-try {
   font-size: 17px;
   margin-bottom: 29px;
+  transition: opacity .35s ease;
+
+  &:hover {
+    opacity: .85;
+  }
 }
 
 .button-learn-more {
@@ -48,6 +53,11 @@ $btn-outline-color: #0B56BC;
   transform: translate(-50%, 0);
   position: relative;
   left: 50%;
+  transition: opacity .2s ease;
+
+  &:hover {
+    opacity: .5;
+  }
 }
 
 .button-cta--invert {

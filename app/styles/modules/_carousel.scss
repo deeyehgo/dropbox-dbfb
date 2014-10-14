@@ -9,6 +9,7 @@ $carousel-width: 540px;
 .carousel {
   width: $carousel-width;
   margin: 0 auto;
+  position: relative;
 }
 
 .carousel-image-wrapper {
@@ -23,15 +24,24 @@ $carousel-width: 540px;
   height: 300px;
   position: relative;
 
+  @media (max-width: $screen-md) {
+    width: 1000px;
+  }
+
   img {
     float: left;
     width: $carousel-width;
+
+    @media (max-width: $screen-md) {
+      width: 200px;
+      height: auto;
+    }
   }
 }
 
 .arrow-container {
   position: absolute;
-  top: 50%;
+  top: 138px;
   transform: translate(0, -50%);
   z-index: 2;
   width: $carousel-width;
@@ -70,6 +80,11 @@ $carousel-width: 540px;
   width: 16px;
   height: 30px;
   position: absolute;
+  transition: opacity .25s ease;
+
+  &:hover {
+    opacity: .65;
+  }
 }
 
 .arrow--prev {
@@ -89,6 +104,7 @@ $carousel-width: 540px;
   border-radius: 16px;
   width: 16px;
   height: 16px;
+  transition: opacity .25s ease;
 
   &.active {
     background-color: $pagination-item-color--active;
@@ -96,6 +112,10 @@ $carousel-width: 540px;
 
   &:last-child {
     margin-right: 0;
+  }
+
+  &:hover {
+    opacity: .75;
   }
 }
 

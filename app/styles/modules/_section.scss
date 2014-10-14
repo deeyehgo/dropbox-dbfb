@@ -23,6 +23,20 @@
     border-bottom: 1px solid $buy-cta-color;
     color: white;
     padding-bottom: 2px;
+    transition: opacity .25s ease;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+
+.section-wrapper {
+  width: 990px;
+  margin: 0 auto;
+  @media (max-width: $screen-md) {
+    width: initial;
+    margin: 0 15px;
   }
 }
 
@@ -68,6 +82,19 @@
   background-size: cover;
   height: 500px;
   padding: 58px 0;
+}
+
+.work-together-bg {
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 500px;
+  width: 1050px;
+  margin: 0 auto;
+  z-index: 1;
 }
 
 .section--sync {

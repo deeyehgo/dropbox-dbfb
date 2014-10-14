@@ -7,6 +7,10 @@ body {
 }
 
 .article-item {
+  @media (max-width: $screen-md) {
+    margin-bottom: 80px;
+  }
+
   h1 {
     margin-bottom: 15px;
   }
@@ -42,7 +46,6 @@ body {
 }
 
 .hero-bg {
-  background: $dropbox-blue url(../images/dropbox-for-business-files.png) no-repeat;
   background-size: cover;
   opacity: 0;
   position: absolute;

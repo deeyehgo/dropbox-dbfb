@@ -5,6 +5,8 @@
 .video-wrapper {
   width: 100%;
   height: 100%;
+  // position: relative;
+  z-index: 2;
 }
 
 .close-video {
@@ -25,6 +27,11 @@
   transform: translate(-50%, -50%);
   width: 106px;
   height: 106px;
+  transition: opacity .25s ease;
+  
+  &:hover {
+    opacity: .75;
+  }
 }
 
 .no-js {

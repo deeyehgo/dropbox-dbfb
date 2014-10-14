@@ -57,10 +57,21 @@ $gutter-width: 30px;
 .col-11,
 .col-12 {
     float:left;
+
+    @media (max-width: $screen-md) {
+      width: 100% !important;
+      float: none !important;
+    }
 }
 
 *[class^='col-'] {
   margin-left: $gutter-width;
+
+  @media (max-width: $screen-md) {
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
 
   &:first-of-type {
     margin-left: 0;    
