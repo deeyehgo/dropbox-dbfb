@@ -19,6 +19,7 @@ a {
 
 .active {
   font-weight: bold;
+  pointer-events: none;
 }
 
 .nav-main {
@@ -31,7 +32,6 @@ a {
   opacity: 1;
   transition: opacity 1s ease, transform 1s ease;
   transform: translate3d(0, 0, 0);
-
 }
 
 .remove-transition {
@@ -41,4 +41,9 @@ a {
 .center {
   float: none !important;
   margin: 0 auto !important;
+}
+
+.debug, 
+.debug *{
+  outline: 1px solid #f06; 
 }

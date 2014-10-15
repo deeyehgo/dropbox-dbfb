@@ -1,27 +1,32 @@
-// TODO: retina all images
 // TODO: move article module to separate class
 
 'use strict';
+
 (function () {
   var carousel = new DBCarousel('.carousel'),
-    videoPlayer = new DBFBVideoPlayer('.video-wrapper');
+    videoPlayer = new DBFBVideoPlayer('.video-wrapper'),
+    startY = window.pageYOffset;
+    retinaize.init();
 
-  // move to separate class
-  var articleItems = document.querySelectorAll('.article-img'),
+  var articleItems = $('.article-img'),
     articleItemsTotal = articleItems.length;
 
   function handleScroll() {
-    if(isInViewport(document.querySelector('.article-img'))) {
-      for(var i = 0; i < articleItemsTotal; i++) {
-        setTimeout(showArticleItem, 200 * i, [i]);
+    if(isInViewport(articleItems[0])) {
+      if(startY <= 0 || Math.abs(window.pageYOffset - startY) > 200) {
+        prepareArticleAnimation();
       }
+    }
+  }
 
-      window.removeEventListener('scroll', handleScroll);
+  function prepareArticleAnimation() {
+    for(var i = 0; i < articleItemsTotal; i++) {
+      setTimeout(showArticleItem, 200 * i, [i]);
     }
   }
 
   function showArticleItem(i) {
-    articleItems[i].classList.add('show');
+    $(articleItems[i]).addClass('show');
   }
 
   function isInViewport(el) {
@@ -29,14 +34,17 @@
       html = document.documentElement;
 
     return (
-      rect.top <= (window.innerHeight || html.clientHeight) &&
+      rect.top >= 0 &&
       rect.bottom <= (window.innerHeight || html.clientHeight)
     );
   }
 
-  document.documentElement.classList.toggle('no-js');
-  window.addEventListener('scroll', handleScroll);
-  setTimeout(handleScroll, 10);
-  
-  // retina
+  document.documentElement.className = '';
+
+  setTimeout(function() {
+    window.addEventListener('scroll', handleScroll);
+    if(window.pageYOffset <= 0) {
+      handleScroll();
+    }
+  }, 500);
 }());

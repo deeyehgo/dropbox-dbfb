@@ -1,5 +1,3 @@
-// TODO: pagination navigation
-
 'use strict';
 /**
  * [DBCarousel]
@@ -10,6 +8,7 @@ function DBCarousel(el) {
   this.index = 0;
 
   this.init();
+
 }
 
 DBCarousel.prototype.init = function() {
@@ -20,7 +19,8 @@ DBCarousel.prototype.init = function() {
     wrapper = $('.carousel-image-wrapper'),
     animProps = {},
     canAnimate = true,
-    lastIndex;
+    currentIndex = 0,
+    lastIndex = 0;
 
   arrowsHTML = '<div class="arrow-container">' +
                   '<a href="#" class="button arrow arrow--prev"></a>' +
@@ -37,7 +37,7 @@ DBCarousel.prototype.init = function() {
 
   this.el.insertAdjacentHTML('afterbegin', arrowsHTML);
   this.el.insertAdjacentHTML('beforeend', paginationHTML);
-  this.el.querySelectorAll('.pagination-item')[0].classList.add('active');
+  this.el.querySelectorAll('.pagination-item')[0].className += ' active';
 
   $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
   
@@ -45,17 +45,88 @@ DBCarousel.prototype.init = function() {
     'left': -(itemWidth)
   });
 
+  $(window).on('resize', function() {
+      if($(this).width() < 768) {
+        $('.carousel-image-wrapper').css({
+          'width': $(window).width()
+        });  
+      } else {
+        $('.carousel-image-wrapper').css({
+          'width': 540
+        });  
+      }
+  });
+  $(window).trigger('resize');
+
+  function slideLeft() {
+    animProps = {'left': parseInt($('.carousel-image-container').css('left')) - itemWidth};
+    $('.carousel-image-container').animate(animProps, 350, function() {
+      $('.carousel-image-container img:last').after($('.carousel-image-container img:first'));
+      $('.carousel-image-container').css({
+        'left': -(itemWidth)
+      });
+
+      $('.pagination-item').eq(currentIndex).toggleClass('active');
+      $('.pagination-item').eq(lastIndex).removeClass('active');
+
+      canAnimate = true;
+      lastIndex = currentIndex;
+    });
+  }
+
+  function slideRight() {
+    animProps = {'left': parseInt($('.carousel-image-container').css('left')) + itemWidth};
+    $('.carousel-image-container').animate(animProps, 350, function() {
+      $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
+      $('.carousel-image-container').css({
+        'left': -(itemWidth)
+      });
+
+      $('.pagination-item').eq(currentIndex).toggleClass('active');
+      $('.pagination-item').eq(lastIndex).removeClass('active');
+
+      canAnimate = true;
+      lastIndex = currentIndex;
+    });
+  }
+
   $('.pagination-item').on({
     'click': function() {
-      var index = $(this).index();
-      $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
-      if(index > lastIndex) {
-
-      } else {
-
+      if(!canAnimate) {
+        return false;
       }
 
-      lastIndex = index;
+      var index = $(this).index();
+      currentIndex = index;
+      $('.pagination-item').eq(index).addClass('active');
+      $('.pagination-item').eq(lastIndex).removeClass('active');
+      if(index > lastIndex) {
+        animProps = {'left': parseInt($('.carousel-image-container').css('left')) - itemWidth};
+        $('.carousel-image-container').animate(animProps, 350, function() {
+          $('.carousel-image-container img:last').after($('.carousel-image-container img:first'));
+          $('.carousel-image-container').css({
+            'left': -(itemWidth)
+          });
+
+          $('.pagination-item').eq(currentIndex).addClass('active');
+
+          canAnimate = true;
+        });
+      } else {
+        animProps = {'left': parseInt($('.carousel-image-container').css('left')) + itemWidth};
+        $('.carousel-image-container').animate(animProps, 350, function() {
+          $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
+          $('.carousel-image-container').css({
+            'left': -(itemWidth)
+          });
+
+          $('.pagination-item').eq(currentIndex).addClass('active');
+
+          canAnimate = true;
+        });
+      }
+
+      lastIndex = currentIndex;
       return false;
     }
   });
@@ -66,19 +137,13 @@ DBCarousel.prototype.init = function() {
         return false;
       }
 
-      animProps = {'left': parseInt($('.carousel-image-container').css('left')) + itemWidth};
-      $('.carousel-image-container').animate(animProps, 350, function() {
-        $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
-        $('.carousel-image-container').css({
-          'left': -(itemWidth)
-        });
+      currentIndex -= 1;
+      if(currentIndex < 0) {
+        currentIndex = carouselItems - 1;
+      }
 
-        canAnimate = true;
-      });
-
-      lastIndex = $('.carousel-image-container img:first').index();
-      console.log(lastIndex);
-
+      slideRight();
+      
       canAnimate = false;
       return false;
     }
@@ -90,49 +155,15 @@ DBCarousel.prototype.init = function() {
         return false;
       }
 
-      animProps = {'left': parseInt($('.carousel-image-container').css('left')) - itemWidth};
-      $('.carousel-image-container').animate(animProps, 350, function() {
-        $('.carousel-image-container img:last').after($('.carousel-image-container img:first'));
-        $('.carousel-image-container').css({
-          'left': -(itemWidth)
-        });
+      currentIndex += 1;
+      if(currentIndex > carouselItems - 1) {
+        currentIndex = 0;
+      }
 
-        canAnimate = true;
-      });
-
-      lastIndex = $('.carousel-image-container img:last').index();
+      slideLeft();
 
       canAnimate = false;
       return false;
     }
   });
 };
-
-DBCarousel.prototype.scroll = function() {
-
-};
-
-/**
- * Next slide
- */
-DBCarousel.prototype.next = function() {
-  this.index++;
-  if(this.index > this.totalItems) {
-    this.index = 0;
-  }
-
-  // animate slide from RtL (even when going from index[index.length] to index[0])
-};
-
-/**
- * Prev slide
- */
-DBCarousel.prototype.prev = function() {
-  this.index--;
-  if(this.index < 0) {
-    this.index = this.totalItems;
-  }
-
-  // animate slide from LtR (even when going from index[index.length] to index[0])
-};
-

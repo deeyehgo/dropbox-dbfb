@@ -2,27 +2,26 @@
 // Hero
 //---------------------------
 
-.hero-container {
-  // background-color: $dropbox-blue;
-}
-
 .hero {
   background-color: $dropbox-blue;
   height: 500px;
   color: $header-copy-color;
+
+  .row {
+    margin: 0 15px;
+  }
 }
 
 .header-wrapper {
   margin: 0 auto;
   position: relative;
   height: 100%;
-  width: 990px;
   z-index: 2;
 }
 
 .header {
-  top: 107px;
   position: absolute;
+  top: 107px;
   left: 50%;
   transform: translate(-50%, 0);
 

@@ -11,22 +11,29 @@ function DBFBVideoPlayer(el) {
 }
 
 DBFBVideoPlayer.prototype.init = function() {
-  console.log('oaisjidsaj', this, this.playBtn);
   this.playBtn.addEventListener('click', this.handlePlay.bind(this));
   this.closeBtn.addEventListener('click', this.handleClose.bind(this));
   this.video.addEventListener('ended', this.handleVideoComplete.bind(this));
+
+  $(this.videoContainer).css({'opacity': 0});
 };
 
 DBFBVideoPlayer.prototype.handlePlay = function(event) {
   event.preventDefault();
-  this.videoContainer.classList.toggle('show');
+  $(this.videoContainer).toggleClass('show');
   this.video.play();
+
+  this.closeBtn.style.right = '-20px';
+  var animProps = {
+    'right': 30
+  }
+  $('.close-video').animate(animProps, 350);
 };
 
 DBFBVideoPlayer.prototype.handleClose = function() {
   event.preventDefault();
   this.video.currentTime = 0;
-  this.videoContainer.classList.toggle('show');
+  $(this.videoContainer).toggleClass('show');
   this.video.pause();
 };
 

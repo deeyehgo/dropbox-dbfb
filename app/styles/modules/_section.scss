@@ -23,6 +23,19 @@
     border-bottom: 1px solid $buy-cta-color;
     color: white;
     padding-bottom: 2px;
+    transition: opacity .25s ease;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+
+.section-wrapper {
+  margin: 0 auto;
+
+  @media (max-width: $screen-md) {
+    width: initial;
   }
 }
 
@@ -43,11 +56,15 @@
 
   .container {
     margin-bottom: 36px;
+    
+    @media (max-width: $screen-md) {
+      margin-bottom: 0;
+    }
   }
 }
 
 .section--why-dbfb {
-  border-bottom: 1px solid $lighter-cool-grey;
+  border-bottom: 1px solid $border-bottom-color;
   padding: 72px 0 59px;
 
   h1 {
@@ -68,23 +85,42 @@
   background-size: cover;
   height: 500px;
   padding: 58px 0;
+
+  @media (max-width: $screen-xs) {
+    background-position: 61% 0;
+  }
+}
+
+.work-together-bg {
+  background-size: cover;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 1050px;
+  height: 500px;
+  z-index: 1;
 }
 
 .section--sync {
-  border-bottom: 1px solid $lighter-cool-grey;
+  border-bottom: 1px solid $footer-cta-color;
   padding: 63px 0 76px;
   width: 100%;
 
   h1 {
     margin-bottom: 30px;
   }
+
+  .buy-cta {
+    color: $footer-cta-color;
+  }
 }
 
-
-// TODO: move to _business?
 .cta-container {
-  width: 254px;
   margin: 0 auto;
+  width: 254px;
 }
 
 .article-img {

@@ -5,26 +5,44 @@
 .video-wrapper {
   width: 100%;
   height: 100%;
+  z-index: 2;
 }
 
 .close-video {
-  position: absolute;
-  top: 0;
+  background-color: rgba(255, 255, 255, .9);
+  background-image: url(../images/close-btn.png);
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid $dropbox-blue;
+  border-radius: 4px;
   color: $dropbox-blue;
+  padding: 30px;
+  position: absolute;
+  top: 40px;
+  right: 40px;
   z-index: 2;
-  right: 50%;
-  transform: translate(460px, 0);
+  transition: background-color .5s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, .75);
+  }
 }
 
 .play-video {
-  background: url(../images/player_large.png) no-repeat;
+  background: url(../images/player_large@2x.png) center / contain no-repeat;
   display: inline-block;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 106px;
   height: 106px;
+  transform: translate(-50%, -50%);
+  transition: opacity .25s ease;
+  
+  &:hover {
+    opacity: .75;
+  }
 }
 
 .no-js {
@@ -34,20 +52,22 @@
 }
 
 .video-container {
-  display: none;
+  pointer-events: none;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity .5s ease;
+  z-index: 0;
 
   &.show {
-    display: block;
-    opacity: 1;
+    pointer-events: auto;
+    opacity: 1 !important;
+    z-index: 1;
   }
 }
 
 .video-player {
   background: #000;
-  width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
+  width: 100%;
+  height: 100%;
 }

@@ -17,5 +17,14 @@ $header-copy-color: white;
 $bg-header-color:   $dropbox-blue;
 $main-copy-color:   $lighter-cool-grey;
 $footer-copy:       $light-cool-grey;
-
+$footer-cta-color:  $lighter-cool-grey;
 $buy-cta-color:     #B0CEE7;
+$border-bottom-color: $lighter-cool-grey;
+
+//---------------------------
+// Breakpoints
+//---------------------------
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 1050px;
+$screen-lg: 1200px;

@@ -16,7 +16,7 @@ var DBFBHero = (function() {
     _el.addEventListener('webkitTransitionEnd', _handleTransitionComplete);
     _el.addEventListener('transitionend', _handleTransitionComplete);
     _el.style.opacity = 1;
-    _el.classList.add('show-header');
+    _el.className += ' show-header';
     _handleScroll();
   };
 
@@ -24,7 +24,7 @@ var DBFBHero = (function() {
     _el.removeEventListener('webkitTransitionEnd', _handleTransitionComplete);
     _el.removeEventListener('transitionend', _handleTransitionComplete);
     _animating = false;
-    _el.classList.add('remove-transition');
+    _el.className += ' remove-transition';
   };
 
   var _handleScroll = function() {
@@ -52,38 +52,35 @@ function DBFBVideoPlayer(el) {
 }
 
 DBFBVideoPlayer.prototype.init = function() {
-  console.log('oaisjidsaj', this, this.playBtn);
   this.playBtn.addEventListener('click', this.handlePlay.bind(this));
   this.closeBtn.addEventListener('click', this.handleClose.bind(this));
   this.video.addEventListener('ended', this.handleVideoComplete.bind(this));
+
+  $(this.videoContainer).css({'opacity': 0});
 };
 
 DBFBVideoPlayer.prototype.handlePlay = function(event) {
   event.preventDefault();
-  this.videoContainer.classList.toggle('show');
+  $(this.videoContainer).toggleClass('show');
   this.video.play();
+
+  this.closeBtn.style.right = '-20px';
+  var animProps = {
+    'right': 30
+  }
+  $('.close-video').animate(animProps, 350);
 };
 
 DBFBVideoPlayer.prototype.handleClose = function() {
   event.preventDefault();
   this.video.currentTime = 0;
-  this.videoContainer.classList.toggle('show');
+  $(this.videoContainer).toggleClass('show');
   this.video.pause();
 };
 
 DBFBVideoPlayer.prototype.handleVideoComplete = function() {
   this.handleClose();
 };
-'use strict';
-function DBPagination() {
-  // this.pageItems = 
-}
-
-DBPagination.prototype.init = function() {
-  // build all items - insert in to dom
-};
-// TODO: pagination navigation
-
 'use strict';
 /**
  * [DBCarousel]
@@ -94,6 +91,7 @@ function DBCarousel(el) {
   this.index = 0;
 
   this.init();
+
 }
 
 DBCarousel.prototype.init = function() {
@@ -104,7 +102,8 @@ DBCarousel.prototype.init = function() {
     wrapper = $('.carousel-image-wrapper'),
     animProps = {},
     canAnimate = true,
-    lastIndex;
+    currentIndex = 0,
+    lastIndex = 0;
 
   arrowsHTML = '<div class="arrow-container">' +
                   '<a href="#" class="button arrow arrow--prev"></a>' +
@@ -121,7 +120,7 @@ DBCarousel.prototype.init = function() {
 
   this.el.insertAdjacentHTML('afterbegin', arrowsHTML);
   this.el.insertAdjacentHTML('beforeend', paginationHTML);
-  this.el.querySelectorAll('.pagination-item')[0].classList.add('active');
+  this.el.querySelectorAll('.pagination-item')[0].className += ' active';
 
   $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
   
@@ -129,17 +128,88 @@ DBCarousel.prototype.init = function() {
     'left': -(itemWidth)
   });
 
+  $(window).on('resize', function() {
+      if($(this).width() < 768) {
+        $('.carousel-image-wrapper').css({
+          'width': $(window).width()
+        });  
+      } else {
+        $('.carousel-image-wrapper').css({
+          'width': 540
+        });  
+      }
+  });
+  $(window).trigger('resize');
+
+  function slideLeft() {
+    animProps = {'left': parseInt($('.carousel-image-container').css('left')) - itemWidth};
+    $('.carousel-image-container').animate(animProps, 350, function() {
+      $('.carousel-image-container img:last').after($('.carousel-image-container img:first'));
+      $('.carousel-image-container').css({
+        'left': -(itemWidth)
+      });
+
+      $('.pagination-item').eq(currentIndex).toggleClass('active');
+      $('.pagination-item').eq(lastIndex).removeClass('active');
+
+      canAnimate = true;
+      lastIndex = currentIndex;
+    });
+  }
+
+  function slideRight() {
+    animProps = {'left': parseInt($('.carousel-image-container').css('left')) + itemWidth};
+    $('.carousel-image-container').animate(animProps, 350, function() {
+      $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
+      $('.carousel-image-container').css({
+        'left': -(itemWidth)
+      });
+
+      $('.pagination-item').eq(currentIndex).toggleClass('active');
+      $('.pagination-item').eq(lastIndex).removeClass('active');
+
+      canAnimate = true;
+      lastIndex = currentIndex;
+    });
+  }
+
   $('.pagination-item').on({
     'click': function() {
-      var index = $(this).index();
-      $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
-      if(index > lastIndex) {
-
-      } else {
-
+      if(!canAnimate) {
+        return false;
       }
 
-      lastIndex = index;
+      var index = $(this).index();
+      currentIndex = index;
+      $('.pagination-item').eq(index).addClass('active');
+      $('.pagination-item').eq(lastIndex).removeClass('active');
+      if(index > lastIndex) {
+        animProps = {'left': parseInt($('.carousel-image-container').css('left')) - itemWidth};
+        $('.carousel-image-container').animate(animProps, 350, function() {
+          $('.carousel-image-container img:last').after($('.carousel-image-container img:first'));
+          $('.carousel-image-container').css({
+            'left': -(itemWidth)
+          });
+
+          $('.pagination-item').eq(currentIndex).addClass('active');
+
+          canAnimate = true;
+        });
+      } else {
+        animProps = {'left': parseInt($('.carousel-image-container').css('left')) + itemWidth};
+        $('.carousel-image-container').animate(animProps, 350, function() {
+          $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
+          $('.carousel-image-container').css({
+            'left': -(itemWidth)
+          });
+
+          $('.pagination-item').eq(currentIndex).addClass('active');
+
+          canAnimate = true;
+        });
+      }
+
+      lastIndex = currentIndex;
       return false;
     }
   });
@@ -150,19 +220,13 @@ DBCarousel.prototype.init = function() {
         return false;
       }
 
-      animProps = {'left': parseInt($('.carousel-image-container').css('left')) + itemWidth};
-      $('.carousel-image-container').animate(animProps, 350, function() {
-        $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
-        $('.carousel-image-container').css({
-          'left': -(itemWidth)
-        });
+      currentIndex -= 1;
+      if(currentIndex < 0) {
+        currentIndex = carouselItems - 1;
+      }
 
-        canAnimate = true;
-      });
-
-      lastIndex = $('.carousel-image-container img:first').index();
-      console.log(lastIndex);
-
+      slideRight();
+      
       canAnimate = false;
       return false;
     }
@@ -174,77 +238,75 @@ DBCarousel.prototype.init = function() {
         return false;
       }
 
-      animProps = {'left': parseInt($('.carousel-image-container').css('left')) - itemWidth};
-      $('.carousel-image-container').animate(animProps, 350, function() {
-        $('.carousel-image-container img:last').after($('.carousel-image-container img:first'));
-        $('.carousel-image-container').css({
-          'left': -(itemWidth)
-        });
+      currentIndex += 1;
+      if(currentIndex > carouselItems - 1) {
+        currentIndex = 0;
+      }
 
-        canAnimate = true;
-      });
-
-      lastIndex = $('.carousel-image-container img:last').index();
+      slideLeft();
 
       canAnimate = false;
       return false;
     }
   });
 };
+'use strict';
 
-DBCarousel.prototype.scroll = function() {
+var retinaize = (function() {
 
-};
+  var retinaize = {
+    init: function() {
+      window.addEventListener('load', function() {
+        var images = document.querySelectorAll('img'),
+          imagesLength = images.length,
+          retinaImage,
+          image;
 
-/**
- * Next slide
- */
-DBCarousel.prototype.next = function() {
-  this.index++;
-  if(this.index > this.totalItems) {
-    this.index = 0;
-  }
+          for(var i = 0; i < imagesLength; i++) {
+            image = images[i];
+            retinaImage = image.getAttribute('data-retina');
+            if(retinaImage !== null) {
+              image.setAttribute('width', image.offsetWidth);
+              image.setAttribute('height', image.offsetHeight);
+              image.setAttribute('src', retinaImage);
+            }
+          }
+      });
+    }
+  };
 
-  // animate slide from RtL (even when going from index[index.length] to index[0])
-};
+  return retinaize;
 
-/**
- * Prev slide
- */
-DBCarousel.prototype.prev = function() {
-  this.index--;
-  if(this.index < 0) {
-    this.index = this.totalItems;
-  }
-
-  // animate slide from LtR (even when going from index[index.length] to index[0])
-};
-
-
-// TODO: retina all images
+}());
 // TODO: move article module to separate class
 
 'use strict';
+
 (function () {
   var carousel = new DBCarousel('.carousel'),
-    videoPlayer = new DBFBVideoPlayer('.video-wrapper');
+    videoPlayer = new DBFBVideoPlayer('.video-wrapper'),
+    startY = window.pageYOffset;
+    retinaize.init();
 
-  // move to separate class
-  var articleItems = document.querySelectorAll('.article-img'),
+  var articleItems = $('.article-img'),
     articleItemsTotal = articleItems.length;
 
   function handleScroll() {
-    if(isInViewport(document.querySelector('.article-img'))) {
-      for(var i = 0; i < articleItemsTotal; i++) {
-        setTimeout(showArticleItem, 200 * i, [i]);
+    if(isInViewport(articleItems[0])) {
+      if(startY <= 0 || Math.abs(window.pageYOffset - startY) > 200) {
+        prepareArticleAnimation();
       }
+    }
+  }
 
-      window.removeEventListener('scroll', handleScroll);
+  function prepareArticleAnimation() {
+    for(var i = 0; i < articleItemsTotal; i++) {
+      setTimeout(showArticleItem, 200 * i, [i]);
     }
   }
 
   function showArticleItem(i) {
-    articleItems[i].classList.add('show');
+    $(articleItems[i]).addClass('show');
   }
 
   function isInViewport(el) {
@@ -252,14 +314,17 @@ DBCarousel.prototype.prev = function() {
       html = document.documentElement;
 
     return (
-      rect.top <= (window.innerHeight || html.clientHeight) &&
+      rect.top >= 0 &&
       rect.bottom <= (window.innerHeight || html.clientHeight)
     );
   }
 
-  document.documentElement.classList.toggle('no-js');
-  window.addEventListener('scroll', handleScroll);
-  setTimeout(handleScroll, 10);
-  
-  // retina
+  document.documentElement.className = '';
+
+  setTimeout(function() {
+    window.addEventListener('scroll', handleScroll);
+    if(window.pageYOffset <= 0) {
+      handleScroll();
+    }
+  }, 500);
 }());
