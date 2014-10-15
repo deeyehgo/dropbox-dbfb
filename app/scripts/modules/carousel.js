@@ -1,5 +1,3 @@
-// TODO: pagination navigation
-
 'use strict';
 /**
  * [DBCarousel]
@@ -10,6 +8,7 @@ function DBCarousel(el) {
   this.index = 0;
 
   this.init();
+
 }
 
 DBCarousel.prototype.init = function() {
@@ -38,13 +37,26 @@ DBCarousel.prototype.init = function() {
 
   this.el.insertAdjacentHTML('afterbegin', arrowsHTML);
   this.el.insertAdjacentHTML('beforeend', paginationHTML);
-  this.el.querySelectorAll('.pagination-item')[0].classList.add('active');
+  this.el.querySelectorAll('.pagination-item')[0].className += ' active';
 
   $('.carousel-image-container img:first').before($('.carousel-image-container img:last'));
   
   $('.carousel-image-container').css({
     'left': -(itemWidth)
   });
+
+  $(window).on('resize', function() {
+      if($(this).width() < 768) {
+        $('.carousel-image-wrapper').css({
+          'width': $(window).width()
+        });  
+      } else {
+        $('.carousel-image-wrapper').css({
+          'width': 540
+        });  
+      }
+  });
+  $(window).trigger('resize');
 
   function slideLeft() {
     animProps = {'left': parseInt($('.carousel-image-container').css('left')) - itemWidth};

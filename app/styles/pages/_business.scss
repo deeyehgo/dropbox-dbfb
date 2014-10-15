@@ -8,7 +8,7 @@ body {
 
 .article-item {
   @media (max-width: $screen-md) {
-    margin-bottom: 80px;
+    margin-bottom: 30px;
   }
 
   h1 {
@@ -55,9 +55,15 @@ body {
   left: 0;
   height: 630px;
   transform: translate(0, 60px);
-  width: 1050px;
+  width: 100%;
   margin: 0 auto;
   z-index: 1;
+
+  img {
+    position: relative;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 
 .no-js {

@@ -8,11 +8,11 @@
     startY = window.pageYOffset;
     retinaize.init();
 
-  var articleItems = document.querySelectorAll('.article-img'),
+  var articleItems = $('.article-img'),
     articleItemsTotal = articleItems.length;
 
   function handleScroll() {
-    if(isInViewport(document.querySelector('.article-img'))) {
+    if(isInViewport(articleItems[0])) {
       if(startY <= 0 || Math.abs(window.pageYOffset - startY) > 200) {
         prepareArticleAnimation();
       }
@@ -26,7 +26,7 @@
   }
 
   function showArticleItem(i) {
-    articleItems[i].classList.add('show');
+    $(articleItems[i]).addClass('show');
   }
 
   function isInViewport(el) {
@@ -39,7 +39,7 @@
     );
   }
 
-  document.documentElement.classList.toggle('no-js');
+  document.documentElement.className = '';
 
   setTimeout(function() {
     window.addEventListener('scroll', handleScroll);

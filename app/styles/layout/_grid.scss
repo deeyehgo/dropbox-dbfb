@@ -1,5 +1,6 @@
-
+//---------------------------
 // Grid
+//---------------------------
 // - 12 columns
 // - width: 990px
 // - column width: 55px
@@ -8,7 +9,9 @@
 
 $grid-width: 990px;
 $column-width: 55px;
-$gutter-width: 30px;
+$gutter-width: 15px;
+
+$max-width: $grid-width;
 
 *,
 *:after,
@@ -17,18 +20,18 @@ $gutter-width: 30px;
 }
 
 .container {
+  margin: 0 auto;
+  max-width: $grid-width + 30; // +30 for gutter
   width: 100%;
 }
 
 .row {
   @include clearfix();
-  margin:0 auto;
 }
 
 .grid {
   width: $grid-width;
   max-width: $grid-width;
-  margin: 0 auto;
 }
 
 .cols {
@@ -57,24 +60,22 @@ $gutter-width: 30px;
 .col-11,
 .col-12 {
     float:left;
+    min-height: 1px;
+    width: (($column-width + $gutter-width) / $grid-width) * 100%;
 
-    @media (max-width: $screen-md) {
-      width: 100% !important;
+    @media (max-width: $screen-sm) {
       float: none !important;
+      width: 100% !important;
     }
 }
 
 *[class^='col-'] {
-  margin-left: $gutter-width;
+  padding: 15px;
 
-  @media (max-width: $screen-md) {
-    width: 100%;
+  @media (max-width: $screen-sm) {
     float: none;
     margin: 0;
-  }
-
-  &:first-of-type {
-    margin-left: 0;    
+    width: 100%;
   }
 }
 
@@ -87,30 +88,17 @@ footer  *[class^='col-'] {
 }
 
 .col-2 {
-  width: $column-width * 2 + $gutter-width * 2;
+  width: (($column-width * 2 + $gutter-width * 4)  / 1020px) * 100%;
 }
 
 .col-3 {
-  width: $column-width * 3 + $gutter-width * 2;
-}
-
-.col-3-pad-right {
-  width: $column-width * 3 + $gutter-width * 3;
+  width: (($column-width * 3 + $gutter-width * 2) / 1020px) * 100%;
 }
 
 .col-4 {
-  width: $column-width * 4 + $gutter-width * 3;
+  width: (($column-width * 4 + $gutter-width * 8)  / 1020px) * 100%;
 }
 
 .col-12 {
-  width: $column-width * 12 + $gutter-width * 11;
-}
-
-.col-push-1 {
-  margin-left: $column-width + $gutter-width * 2;
-}
-
-.col-12 {
-  width: 100%;
-  margin-left: 0;
+  width: (($column-width * 12 + $gutter-width * 11) / $grid-width) * 100%;
 }

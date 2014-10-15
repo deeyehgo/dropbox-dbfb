@@ -11,9 +11,20 @@
     color: white;
     font-weight: 500;
     font-size: 15px;
+    border: 0;
+
+    img {
+      border: 0;
+    }
 
     &.active {
       font-weight: bold;
+    }
+  }
+
+  ul {
+    @media (max-width: $screen-sm) {
+      display: none;
     }
   }
 
@@ -24,12 +35,14 @@
       margin-bottom: 0;
     }
   }
+
+  
 }
 
 .dropbox-logo {
+  margin-bottom: 35px;
   width: 37px;
   height: 34px;
-  margin-bottom: 35px;
 
   img {
     width: 100%;

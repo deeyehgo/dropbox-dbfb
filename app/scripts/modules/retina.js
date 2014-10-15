@@ -1,5 +1,6 @@
+'use strict';
+
 var retinaize = (function() {
-  'use strict';
 
   var retinaize = {
     init: function() {
@@ -7,10 +8,9 @@ var retinaize = (function() {
         var images = document.querySelectorAll('img'),
           imagesLength = images.length,
           retinaImage,
-          image,
-          i;
+          image;
 
-          for(i = 0; i < imagesLength; i++) {
+          for(var i = 0; i < imagesLength; i++) {
             image = images[i];
             retinaImage = image.getAttribute('data-retina');
             if(retinaImage !== null) {

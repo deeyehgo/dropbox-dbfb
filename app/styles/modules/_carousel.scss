@@ -7,49 +7,90 @@ $pagination-item-color--active:   $lighter-cool-grey;
 $carousel-width: 540px;
 
 .carousel {
-  width: $carousel-width;
   margin: 0 auto;
   position: relative;
+  width: $carousel-width;
+
+  @media (max-width: $screen-sm) {
+    overflow: hidden;
+  }
+
+  @media (max-width: 540px) {
+    width: 100%;
+  }
 }
 
 .carousel-image-wrapper {
   margin: 0 auto 18px;
-  
-  height: 300px;
   overflow: hidden;
+  width: 540px;
+  height: 300px;
 }
 
 .carousel-image-container {
-  width: 1620px;
-  height: 300px;
   position: relative;
-
-  @media (max-width: $screen-md) {
-    width: 1000px;
-  }
+  width: 1620px; // for 3 images
+  height: 300px;
 
   img {
     float: left;
     width: $carousel-width;
-
-    @media (max-width: $screen-md) {
-      width: 200px;
-      height: auto;
-    }
+    height: auto;
   }
 }
 
 .arrow-container {
   position: absolute;
   top: 138px;
+  width: $carousel-width;
   transform: translate(0, -50%);
   z-index: 2;
-  width: $carousel-width;
+
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    position: relative;
+    top: 335px;
+    width: 80%;
+  }
+}
+
+.arrow {
+  display: inline-block;
+  position: absolute;
+  width: 16px;
+  height: 30px;
+  transition: opacity .25s ease;
+
+  &:hover {
+    opacity: .65;
+  }
+}
+
+.arrow--prev {
+  background: url(../images/arrow-left.png) no-repeat;
+  left: -85px;
+
+  @media (max-width: $screen-sm) {
+    left: 0;
+  }
+}
+
+.arrow--next{
+  background: url(../images/arrow-right.png) no-repeat;
+  right: -85px;
+
+  @media (max-width: $screen-sm) {
+    right: 0;
+  }
 }
 
 .pagination-container {
   margin-bottom: 50px;
   text-align: center;
+
+  @media (max-width: $screen-sm) {
+    margin-top: 40px;
+  }
 }
 
 .carousel-copy {
@@ -63,45 +104,23 @@ $carousel-width: 540px;
   }
 
   .carousel-image-container {
+    position: relative;
     width: auto;
     height: 100%;
-    position: relative;
 
     img {
-      float: none;
       display: block;
+      float: none;
       width: $carousel-width;
     }
   }
 }
 
-.arrow {
-  display: inline-block;
-  width: 16px;
-  height: 30px;
-  position: absolute;
-  transition: opacity .25s ease;
-
-  &:hover {
-    opacity: .65;
-  }
-}
-
-.arrow--prev {
-  background: url(../images/arrow-left.png) no-repeat;
-  left: -85px;
-}
-
-.arrow--next{
-  background: url(../images/arrow-right.png) no-repeat;
-  right: -85px;
-}
-
 .pagination-item {
   background-color: $pagination-item-color;
+  border-radius: 16px;
   display: inline-block;
   margin-right: 26px;
-  border-radius: 16px;
   width: 16px;
   height: 16px;
   transition: opacity .25s ease;
@@ -118,4 +137,3 @@ $carousel-width: 540px;
     opacity: .75;
   }
 }
-

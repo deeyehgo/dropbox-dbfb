@@ -16,7 +16,7 @@ var DBFBHero = (function() {
     _el.addEventListener('webkitTransitionEnd', _handleTransitionComplete);
     _el.addEventListener('transitionend', _handleTransitionComplete);
     _el.style.opacity = 1;
-    _el.classList.add('show-header');
+    _el.className += ' show-header';
     _handleScroll();
   };
 
@@ -24,7 +24,7 @@ var DBFBHero = (function() {
     _el.removeEventListener('webkitTransitionEnd', _handleTransitionComplete);
     _el.removeEventListener('transitionend', _handleTransitionComplete);
     _animating = false;
-    _el.classList.add('remove-transition');
+    _el.className += ' remove-transition';
   };
 
   var _handleScroll = function() {
